@@ -12,12 +12,13 @@ class ViewController: UIViewController {
     let parsingGroup = DispatchGroup()
     var articles: jsonResponseModel? = nil
     let network = ParsingData()
+    let childView = SpinnerView()
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        moveIndicator()
         setupTableView()
         network.parsingRequst { (jsonResponseModel) in
             guard let jsonResponseModel = jsonResponseModel else { return }
@@ -29,7 +30,19 @@ class ViewController: UIViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func stopIndicator() {
+        self.childView.willMove(toParent: nil)
+        self.childView.view.removeFromSuperview()
+        self.childView.removeFromParent()
+    }
+    
+    func moveIndicator() {
+        addChild(childView)
+        childView.view.frame = view.frame
+        view.addSubview(childView.view)
+        childView.didMove(toParent: self)
     }
 }
 
@@ -44,6 +57,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         cell.configureCell(with: (articles?.articles[indexPath.row ])!)
+        stopIndicator()
         return cell
     }
     

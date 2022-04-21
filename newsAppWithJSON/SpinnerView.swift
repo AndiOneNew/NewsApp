@@ -43,4 +43,17 @@ class SpinnerView: UIViewController {
         label.centerXAnchor.constraint(equalTo: rectangleView.centerXAnchor, constant: 0).isActive = true
         label.topAnchor.constraint(equalTo: spinner.bottomAnchor, constant: 10).isActive = true
     }
+    
+//    func stopIndicator() {
+//        self.willMove(toParent: nil)
+//        self.view.removeFromSuperview()
+//        self.removeFromParent()
+//    }
+//    
+//    func moveIndicator() {
+//        addChild(SpinnerView())
+//        SpinnerView().view.frame = view.frame
+//        view.addSubview(SpinnerView().view)
+//        SpinnerView().didMove(toParent: self)
+//    }
 }
