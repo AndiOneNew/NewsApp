@@ -34,7 +34,7 @@ class SpinnerView: UIViewController {
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        label.text = "Loading articles..."
+        label.text = "Loading..."
         label.textColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         label.font = UIFont(name: "Arial", size: 22)
         rectangleView.addSubview(label)
@@ -43,17 +43,4 @@ class SpinnerView: UIViewController {
         label.centerXAnchor.constraint(equalTo: rectangleView.centerXAnchor, constant: 0).isActive = true
         label.topAnchor.constraint(equalTo: spinner.bottomAnchor, constant: 10).isActive = true
     }
-    
-//    func stopIndicator() {
-//        self.willMove(toParent: nil)
-//        self.view.removeFromSuperview()
-//        self.removeFromParent()
-//    }
-//    
-//    func moveIndicator() {
-//        addChild(SpinnerView())
-//        SpinnerView().view.frame = view.frame
-//        view.addSubview(SpinnerView().view)
-//        SpinnerView().didMove(toParent: self)
-//    }
 }
